@@ -1,0 +1,16 @@
+Classes:
+
+Assignment
+_studentName
+_topic
+GetSummary()
+
+
+MathAssignment : Assignment
+_textbookSection
+_problems
+GetHomeworkList()
+
+WritingAssignment : Assignment
+_title
+GetWritingInfo()
