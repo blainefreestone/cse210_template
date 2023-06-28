@@ -1,0 +1,38 @@
+Class:
+
+Activity:
+Activity()
+void DisplayStartingMessage()
+void DisplayEndingMessage()
+void ShowSpinner()
+void ShowCountDown()
+
+string _name
+string _description
+int _duration
+
+
+BreathingActivity:
+BreathingActivity()
+void Run()
+
+
+ListingActivity:
+ListingActivity()
+void Run()
+string GetRandomPrompt()
+List<string> GetListFromUser()
+
+int _count
+
+
+ReflectingActivity:
+ReflectingActivity()
+void Run()
+string GetRandomPrompt()
+string GetRandomQuestion()
+void DisplayPrompt()
+void DisplayQuestions()
+
+List<string> _questions
+List<string> _prompts
