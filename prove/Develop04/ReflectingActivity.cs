@@ -16,4 +16,49 @@ public class ReflectingActivity : Activity
     }
     private List<string> _prompts = new List<string>();
     private List<string> _questions = new List<string>();
+    public string GetRandomPrompt()
+    {
+        Random rnd = new Random();
+        int r = rnd.Next(_prompts.Count);
+        return _prompts[r];
+    }
+    public string GetRandomQuestion()
+    {
+        Random rnd = new Random();
+        int r = rnd.Next(_questions.Count);
+        return  _questions[r];
+    }
+    public void DisplayPrompt()
+    {
+        Console.WriteLine();
+        Console.WriteLine("Consider the following prompt:");
+        Console.WriteLine();
+        Console.WriteLine($" --- {GetRandomPrompt()} --- ");
+        Console.WriteLine();
+        Console.WriteLine("When you have something in mind, press enter to continue.");
+        Console.ReadLine();
+    }
+    public void DisplayQuestions(int durationSeconds)
+    {
+        Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
+        Console.Write("You may begin in: ");
+        ShowCountdown(5);
+        Console.Clear();
+        
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(durationSeconds);
+        while (DateTime.Now < endTime)
+        {
+            Console.Write($"> {GetRandomQuestion()} ");
+            ShowSpinner(12);
+            Console.WriteLine();
+        }
+    }
+    public void Run()
+    {
+        DisplayStartingMessage();
+        DisplayPrompt();
+        DisplayQuestions(_duration);
+        DisplayEndingMessage();
+    }
 }
