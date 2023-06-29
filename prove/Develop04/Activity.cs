@@ -1,20 +1,32 @@
 public class Activity
 {
-    private string _name;
-    private string _description;
+    public Activity()
+    {
+        _name = "untitled";
+        _description = "no description";
+        _duration = 0;
+    }
+    protected string _name;
+    protected string _description;
     protected int _duration;
     public void DisplayStartingMessage()
     {
         Console.Clear();
         Console.WriteLine($"Welcome to the {_name}.");
-        Console.WriteLine("");
+        Console.WriteLine();
         Console.WriteLine(_description);
+        Console.WriteLine();
         Console.Write("How long, in seconds, would you like for your session? ");
         _duration = int.Parse(Console.ReadLine());
+        Console.Clear();
+        Console.WriteLine("Get ready...");
+        ShowSpinner(5);
     }
     public void DisplayEndingMessage()
     {
+        Console.WriteLine();
         Console.WriteLine("Well Done!!");
+        ShowSpinner(5);
         Console.WriteLine();
         Console.WriteLine($"You have completed another {_duration} seconds of the {_name}.");
         ShowSpinner(5);
@@ -48,6 +60,11 @@ public class Activity
     }
     public void ShowCountdown(int durationSeconds)
     {
-        // TODO
+        for (int i = durationSeconds; i >= 0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
     }
 }
