@@ -48,5 +48,8 @@ public class ListingActivity : Activity
         Console.WriteLine($"You listed {_count} items!");
         
         DisplayEndingMessage();
+
+        _runningCount += 1;
+        _runningTimeInSeconds += _duration;
     }
 }

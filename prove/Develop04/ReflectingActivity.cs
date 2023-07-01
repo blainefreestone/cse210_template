@@ -60,5 +60,8 @@ public class ReflectingActivity : Activity
         DisplayPrompt();
         DisplayQuestions(_duration);
         DisplayEndingMessage();
+
+        _runningCount += 1;
+        _runningTimeInSeconds += _duration;
     }
 }

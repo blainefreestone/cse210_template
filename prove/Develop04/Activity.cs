@@ -5,10 +5,22 @@ public class Activity
         _name = "untitled";
         _description = "no description";
         _duration = 0;
+        _runningCount = 0;
+        _runningTimeInSeconds = 0;
     }
     protected string _name;
     protected string _description;
     protected int _duration;
+    protected int _runningCount;
+    protected int _runningTimeInSeconds;
+    public int GetTimeInSeconds()
+    {
+        return _runningTimeInSeconds;
+    }
+    public int GetCount()
+    {
+        return _runningCount;
+    }
     public void DisplayStartingMessage()
     {
         Console.Clear();

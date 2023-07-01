@@ -25,5 +25,8 @@ public class BreathingActivity : Activity
         }
 
         DisplayEndingMessage();
+
+        _runningCount += 1;
+        _runningTimeInSeconds += _duration;
     }
 }
