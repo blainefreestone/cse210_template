@@ -1,0 +1,46 @@
+Classes:
+
+abstract Goal
+string name
+string _description
+int _pointValue
+
+abstract void RecordEvent()
+abstract string GetRepresentationText()
+abstract bool IsCompleted()
+virtual string GetDetailsText()
+
+
+
+
+SimpleGoal : Goal
+bool _isComplete
+
+
+
+
+EternalGoal : Goal
+
+
+
+
+ChecklistGoal : Goal
+int _bonusValue
+int _target
+int _numberCompleted
+
+
+
+
+GoalManager
+int _userScore
+List<Goal> _goals
+
+void Start()
+void DisplayPlayerInfo()
+void ListGoalNames()
+void ListGoalDetails()
+void CreateGoal()
+void RecordEvent()
+void SaveGoals()
+void LoadGoals()
