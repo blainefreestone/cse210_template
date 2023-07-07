@@ -12,6 +12,7 @@ public abstract class Goal
     public abstract void RecordEvent();
     public abstract bool IsCompleted();
     public abstract string GetRepresentationText();
+    public string GetName() {return _name;}
     public virtual string GetDetailsText()
     {
         return "empty";

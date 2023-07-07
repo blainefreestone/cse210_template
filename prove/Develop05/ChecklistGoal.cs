@@ -3,11 +3,11 @@ public class ChecklistGoal : Goal
     private int _bonusValue;
     private int _target;
     private int _numberCompleted;
-    public ChecklistGoal(string name, string description, int pointValue, int bonusValue, int target, int numberCompleted) : base(name, description, pointValue)
+    public ChecklistGoal(string name, string description, int pointValue, int bonusValue, int target) : base(name, description, pointValue)
     {
         _bonusValue = bonusValue;
         _target = target;
-        _numberCompleted = numberCompleted;
+        _numberCompleted = 0;
     }
     public override void RecordEvent()
     {
