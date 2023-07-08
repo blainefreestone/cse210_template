@@ -1,1 +1,3 @@
-Checklist|Go to the temple.|Do an ordinance in the house of the Lord.|20|200|3|0
+Checklist|Go to the temple.|Do an ordinance in the house of the Lord.|400|400|4|4
+Simple|Give a talk.|Give a talk in sacrament meeting when asked.|200|True
+Eternal|Read the scriptures. |Read the scriptures for 10 minutes every day.|50

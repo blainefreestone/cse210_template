@@ -9,16 +9,18 @@ public class ChecklistGoal : Goal
         _target = target;
         _numberCompleted = 0;
     }
-    public override void RecordEvent()
+    public override int RecordEvent()
     {
         _numberCompleted += 1;
         if (_numberCompleted == _target)
         {
             Console.WriteLine($"Congratulations! You have earned {_pointValue} points!");
+            return _pointValue;
         }
         else
         {
             Console.WriteLine($"Congratulations! You have earned {_pointValue + _bonusValue} points!");
+            return _pointValue + _bonusValue;
         }
     }
     public override bool IsComplete()

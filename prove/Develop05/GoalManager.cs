@@ -25,6 +25,8 @@ public class GoalManager
 
             else if (userChoice == "2") 
             {
+                Console.Clear();
+
                 int runningCount = 1;
                 foreach (Goal goal in _goals)
                 {
@@ -58,6 +60,8 @@ public class GoalManager
     }
     public void CreateGoal()
     {
+        Console.Clear();
+        
         Console.WriteLine("The types of goals are:");
         Console.WriteLine("   1. Simple Goal");
         Console.WriteLine("   2. Eternal Goal");
@@ -104,6 +108,8 @@ public class GoalManager
     }
     public void RecordEvent()
     {
+        Console.Clear();
+        
         Console.WriteLine("The goals are:");
         ListGoalName();
 
@@ -111,10 +117,15 @@ public class GoalManager
         string goalIndexInText = Console.ReadLine();
         int goalIndex = int.Parse(goalIndexInText);
 
-        _goals[goalIndex - 1].RecordEvent();
+        int pointsRewarded = _goals[goalIndex - 1].RecordEvent();
+        _userScore += pointsRewarded;
+
+        Console.ReadLine();
     }
     public void SaveGoals()
     {
+        Console.Clear();
+        
         Console.WriteLine("Please enter a filename: ");
         string filename = Console.ReadLine();
         using (StreamWriter outputFile = new StreamWriter(filename))
@@ -128,6 +139,8 @@ public class GoalManager
     }
     public void LoadGoals()
     {
+        Console.Clear();
+        
         Console.WriteLine("Please enter a filename: ");
         string filename = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(filename);

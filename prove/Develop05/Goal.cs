@@ -9,7 +9,7 @@ public abstract class Goal
         _description = description;
         _pointValue = pointValue;
     }
-    public abstract void RecordEvent();
+    public abstract int RecordEvent();
     public abstract bool IsComplete();
     public abstract string GetRepresentationText();
     public string GetName() {return _name;}

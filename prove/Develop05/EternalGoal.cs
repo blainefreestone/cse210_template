@@ -1,9 +1,11 @@
 public class EternalGoal : Goal
 {
     public EternalGoal(string name, string description, int pointValue) : base(name, description, pointValue) {}
-    public override void RecordEvent()
+    public override int RecordEvent()
     {
         Console.WriteLine($"Congratulations! You have earned {_pointValue} paints!");
+
+        return _pointValue;
     }
     public override bool IsComplete()
     {
