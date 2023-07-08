@@ -1,7 +1,16 @@
 public class GoalManager
 {
     private int _userScore;
+    private List<string> _levelNames = new List<string>();
     private List<Goal> _goals = new List<Goal>();
+    public GoalManager()
+    {
+        _levelNames.Add("Beginner Level");
+        _levelNames.Add("Bronze Level");
+        _levelNames.Add("Silver Level");
+        _levelNames.Add("Gold Level");
+        _levelNames.Add("Diamond Level");
+    }
     public void Start()
     {
         while (true)
@@ -47,7 +56,7 @@ public class GoalManager
     }
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"You have {_userScore} points.");
+        Console.WriteLine($"You have {_userScore} points. You are currently {GetLevelName()}");
     }
     public void ListGoalName()
     {
@@ -128,10 +137,12 @@ public class GoalManager
         
         Console.WriteLine("Please enter a filename: ");
         string filename = Console.ReadLine();
+        
         using (StreamWriter outputFile = new StreamWriter(filename))
-
-        foreach (Goal goal in _goals)
         {
+            outputFile.WriteLine(_userScore);
+
+            foreach (Goal goal in _goals)
             {
                 outputFile.WriteLine(goal.GetRepresentationText());
             }
@@ -145,9 +156,14 @@ public class GoalManager
         string filename = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(filename);
 
+        string userScoreInText = lines[0];
+        _userScore = int.Parse(userScoreInText);
+
         foreach (string line in lines)
-        {
+        {   
             string[] parts = line.Split("|");
+            
+            if (parts.Count() == 1) {continue;}
 
             string type = parts[0];
             string name = parts[1];
@@ -180,5 +196,17 @@ public class GoalManager
                 _goals.Add(eternalGoal);
             }
         }
+    }
+    public string GetLevelName()
+    {
+        string levelName;
+        if (_userScore > 1000) {levelName = _levelNames[3];}
+        else if (_userScore > 750) {levelName = _levelNames[2];}
+        else if (_userScore > 500) {levelName = _levelNames[1];}
+        else if (_userScore > 250) {levelName = _levelNames[0];}
+        else {levelName = "No level";}
+
+        return levelName;
+
     }
 }
