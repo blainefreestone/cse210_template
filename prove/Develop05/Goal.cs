@@ -10,11 +10,15 @@ public abstract class Goal
         _pointValue = pointValue;
     }
     public abstract void RecordEvent();
-    public abstract bool IsCompleted();
+    public abstract bool IsComplete();
     public abstract string GetRepresentationText();
     public string GetName() {return _name;}
     public virtual string GetDetailsText()
     {
-        return "empty";
+        string detailsText = $"{_name} ({_description})";
+        if (IsComplete()) {detailsText = "[X] " + detailsText;}
+        else {detailsText = "[ ] " + detailsText;}
+        
+        return detailsText;
     }
 }

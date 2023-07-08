@@ -25,10 +25,13 @@ public class GoalManager
 
             else if (userChoice == "2") 
             {
+                int runningCount = 1;
                 foreach (Goal goal in _goals)
                 {
-                    Console.WriteLine(goal.GetDetailsText());
+                    Console.WriteLine(runningCount + ". " + goal.GetDetailsText());
+                    runningCount += 1;
                 }
+                Console.ReadLine();
             }
 
             else if (userChoice == "3") {SaveGoals();}
@@ -87,7 +90,7 @@ public class GoalManager
 
         else if (userChoice == "3")
         {
-            Console.WriteLine("What is the goal for accomplishing this checklist? ");
+            Console.WriteLine("What is the bonus for accomplishing this checklist? ");
             string bonusValueInText = Console.ReadLine();
             int bonusValue = int.Parse(bonusValueInText);
             
@@ -108,16 +111,16 @@ public class GoalManager
         string goalIndexInText = Console.ReadLine();
         int goalIndex = int.Parse(goalIndexInText);
 
-        _goals[goalIndex + 1].RecordEvent();
+        _goals[goalIndex - 1].RecordEvent();
     }
     public void SaveGoals()
     {
         Console.WriteLine("Please enter a filename: ");
         string filename = Console.ReadLine();
+        using (StreamWriter outputFile = new StreamWriter(filename))
 
         foreach (Goal goal in _goals)
         {
-            using (StreamWriter outputFile = new StreamWriter(filename))
             {
                 outputFile.WriteLine(goal.GetRepresentationText());
             }

@@ -3,14 +3,15 @@ public class EternalGoal : Goal
     public EternalGoal(string name, string description, int pointValue) : base(name, description, pointValue) {}
     public override void RecordEvent()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Congratulations! You have earned {_pointValue} paints!");
     }
-    public override bool IsCompleted()
+    public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return false;
     }
     public override string GetRepresentationText()
     {
-        throw new NotImplementedException();
+        string representationText = $"Eternal|{_name}|{_description}|{_pointValue}";
+        return representationText;
     }
 }

@@ -11,18 +11,38 @@ public class ChecklistGoal : Goal
     }
     public override void RecordEvent()
     {
-        throw new NotImplementedException();
+        _numberCompleted += 1;
+        if (_numberCompleted == _target)
+        {
+            Console.WriteLine($"Congratulations! You have earned {_pointValue} points!");
+        }
+        else
+        {
+            Console.WriteLine($"Congratulations! You have earned {_pointValue + _bonusValue} points!");
+        }
     }
-    public override bool IsCompleted()
+    public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        if (_numberCompleted == _target)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public override string GetRepresentationText()
     {
-        throw new NotImplementedException();
+        string representationText = $"Checklist|{_name}|{_description}|{_pointValue}|{_bonusValue}|{_target}|{_numberCompleted}";
+        return representationText;
     }
     public override string GetDetailsText()
     {
-        return base.GetDetailsText();
+        string detailsText = $"{_name} ({_description}) -- Currently completed: {_numberCompleted}/{_target}";
+        if (IsComplete()) {detailsText = "[X] " + detailsText;}
+        else {detailsText = "[ ] " + detailsText;}
+        
+        return detailsText;
     }
 }

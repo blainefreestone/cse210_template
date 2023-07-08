@@ -7,14 +7,17 @@ public class SimpleGoal : Goal
     }
     public override void RecordEvent()
     {
-        throw new NotImplementedException();
+        _isComplete = true;
+        
+        Console.WriteLine($"Congratulations! You have earned {_pointValue} points!");
     }
-    public override bool IsCompleted()
+    public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return _isComplete;
     }
     public override string GetRepresentationText()
     {
-        throw new NotImplementedException();
+        string representationText = $"Simple|{_name}|{_description}|{_pointValue}|{_isComplete}";
+        return representationText;
     }
 }
