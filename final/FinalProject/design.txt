@@ -1,0 +1,68 @@
+Classes:
+
+--------------------------------------
+** Habit **
+
+- Attributes -
+string _name
+Identity _identity
+List<string> _makeItObvious
+List<string> _makeItAttractive
+List<string> _makeItEasy
+List<string> _makeItSatisfying
+
+- Behaviors -
+abstract string GetDisplayText()
+void RecordCompleted()
+abstract string GetRepresentationText()
+--------------------------------------
+** BadHabit : Habit **
+--------------------------------------
+** GoodHabit : Habit **
+
+- Attributes -
+List<TwoMinuteRule> _twoMinuteRules
+--------------------------------------
+** TwoMinuteRule **
+
+- Attributes -
+DateTime _date
+string _ruleDescription
+int _addedTimeInMinutes
+
+- Behaviors -
+GetDisplayText()
+--------------------------------------
+** Identity **
+
+- Attributes -
+string _descriptor
+string _description
+
+- Behaviors -
+GetDisplayText()
+--------------------------------------
+**  HabitTracker **
+
+- Attributes -
+List<Habit> _habits
+
+- Behaviors -
+GetDisplayText()
+DisplayForHabit()
+--------------------------------------
+** HabitManager **
+List<Habit> _habits;
+
+- Behaviors -
+Save()
+Load()
+Restore()
+GetHabitTracker()
+DisplayHabitList()
+DisplayHabit(int habitIndex)
+DisplayAll()
+GetCurrentDate()
+
+The HabitManager class stores the habits which are composed of various other classes. There are different types of habits that inherit from the abstract
+Habit class. The HabitTracker will represent the days a habit was completed and what days it wasn't visually using the terminal.
