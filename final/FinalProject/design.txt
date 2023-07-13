@@ -55,6 +55,7 @@ DisplayForHabit()
 List<Habit> _habits;
 
 - Behaviors -
+Create()
 Save()
 Load()
 Restore()
