@@ -34,4 +34,8 @@ public abstract class Habit
     }
     public abstract string GetDisplayText();
     public abstract string GetRepresentationText();
+    public List<DateOnly> GetDateCompletedList()
+    {
+        return _datesCompleted;
+    }
 }

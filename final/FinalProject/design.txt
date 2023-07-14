@@ -60,11 +60,11 @@ Create()
 Save()
 Load()
 Restore()
-GetHabitTracker()
 DisplayHabitList()
 DisplayHabit(int habitIndex)
 DisplayAll()
 GetCurrentDate()
+GetHabitList()
 
 The HabitManager class stores the habits which are composed of various other classes. There are different types of habits that inherit from the abstract
 Habit class. The HabitTracker will represent the days a habit was completed and what days it wasn't visually using the terminal.
