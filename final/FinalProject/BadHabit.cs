@@ -3,7 +3,7 @@ public class BadHabit : Habit
     public BadHabit(string name, Identity identity) : base(name, identity) {}
     public override string GetDisplayText()
     {
-                string displayText = "";
+        string displayText = "";
 
         displayText += $"HABIT: {_name} (BAD)/n";
         displayText += $"IDENTITY: {_identity.GetDisplayText()}/n/n";
