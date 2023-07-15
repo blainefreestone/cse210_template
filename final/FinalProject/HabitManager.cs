@@ -26,9 +26,10 @@ public class HabitManager
 
                 GoodHabit goodHabit = new GoodHabit(name, identity);
 
+                Console.WriteLine("In what ways are you going to make this habit obvious? (Type 'done' when finished)");
                 while (true)
                 {
-                    Console.WriteLine("In what ways are you going to make this habit obvious? (Type 'done' when finished)");
+                    Console.Write(">");
                     string makeItObvious = Console.ReadLine();
 
                     if (makeItObvious.ToLower() == "done")
@@ -41,9 +42,10 @@ public class HabitManager
                     }
                 }
                 
+                Console.WriteLine("In what ways are you going to make this habit attractive? (Type 'done' when finished)");
                 while (true)
                 {
-                    Console.WriteLine("In what ways are you going to make this habit attractive? (Type 'done' when finished)");
+                    Console.Write(">");
                     string makeItAttractive = Console.ReadLine();
 
                     if (makeItAttractive.ToLower() == "done")
@@ -56,9 +58,10 @@ public class HabitManager
                     }
                 }
 
+                Console.WriteLine("In what ways are you going to make this habit easy? (Type 'done' when finished)");
                 while (true)
                 {
-                    Console.WriteLine("In what ways are you going to make this habit easy? (Type 'done' when finished)");
+                    Console.Write(">");
                     string makeItEasy = Console.ReadLine();
 
                     if (makeItEasy.ToLower() == "done")
@@ -71,9 +74,10 @@ public class HabitManager
                     }
                 }
 
+                Console.WriteLine("In what ways are you going to make this habit satisfying? (Type 'done' when finished)");
                 while (true)
                 {
-                    Console.WriteLine("In what ways are you going to make this habit satisfying? (Type 'done' when finished)");
+                    Console.Write(">");
                     string makeItSatisfying = Console.ReadLine();
 
                     if (makeItSatisfying.ToLower() == "done")
@@ -103,9 +107,10 @@ public class HabitManager
 
                 BadHabit badHabit = new BadHabit(name, identity);
 
+                Console.WriteLine("In what ways are you going to make this habit invisible? (Type 'done' when finished)");
                 while (true)
                 {
-                    Console.WriteLine("In what ways are you going to make this habit invisible? (Type 'done' when finished)");
+                    Console.Write(">");
                     string makeItObvious = Console.ReadLine();
 
                     if (makeItObvious.ToLower() == "done")
@@ -118,9 +123,10 @@ public class HabitManager
                     }
                 }
                 
+                Console.WriteLine("In what ways are you going to make this habit unattractive? (Type 'done' when finished)");
                 while (true)
                 {
-                    Console.WriteLine("In what ways are you going to make this habit unattractive? (Type 'done' when finished)");
+                    Console.Write(">");
                     string makeItAttractive = Console.ReadLine();
 
                     if (makeItAttractive.ToLower() == "done")
@@ -133,9 +139,10 @@ public class HabitManager
                     }
                 }
 
+                Console.WriteLine("In what ways are you going to make this habit difficult? (Type 'done' when finished)");
                 while (true)
                 {
-                    Console.WriteLine("In what ways are you going to make this habit difficult? (Type 'done' when finished)");
+                    Console.Write(">");
                     string makeItEasy = Console.ReadLine();
 
                     if (makeItEasy.ToLower() == "done")
@@ -148,9 +155,10 @@ public class HabitManager
                     }
                 }
 
+                Console.WriteLine("In what ways are you going to make this habit unsatisfying? (Type 'done' when finished)");
                 while (true)
                 {
-                    Console.WriteLine("In what ways are you going to make this habit unsatisfying? (Type 'done' when finished)");
+                    Console.Write(">");
                     string makeItSatisfying = Console.ReadLine();
 
                     if (makeItSatisfying.ToLower() == "done")
@@ -185,11 +193,14 @@ public class HabitManager
     }
     public void DisplayHabit(int habitIndex)
     {
-
+        Console.WriteLine(_habits[habitIndex].GetDisplayText());
     }
     public void DisplayAll()
     {
-
+        foreach(Habit habit in _habits)
+        {
+            Console.Write(habit.GetDisplayText());
+        }
     }
     public void GetCurrentDate()
     {
