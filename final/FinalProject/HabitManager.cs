@@ -90,6 +90,8 @@ public class HabitManager
                     }
                 }
 
+                _habits.Add(goodHabit);
+
                 break;
             }
             else if (userChoice == 2)
@@ -170,6 +172,8 @@ public class HabitManager
                         badHabit.AddMakeItSatisfying(makeItSatisfying);
                     }
                 }
+                
+                _habits.Add(badHabit);
 
                 break;
             }
@@ -197,9 +201,16 @@ public class HabitManager
     }
     public void DisplayAll()
     {
+        int runningCount = 1;
         foreach(Habit habit in _habits)
         {
+            Console.Clear();
+            Console.WriteLine($"Page {runningCount}/{_habits.Count()}\nPress ENTER for next page or type 'done' to exit.");
             Console.Write(habit.GetDisplayText());
+            string userInput = Console.ReadLine();
+            runningCount += 1;
+            
+            if (userInput.ToLower() == "done") {break;}
         }
     }
     public void GetCurrentDate()

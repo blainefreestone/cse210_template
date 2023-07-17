@@ -6,36 +6,36 @@ public class GoodHabit : Habit
     {
         string displayText = "";
 
-        displayText += $"HABIT: {_name} (GOOD)/n";
-        displayText += $"IDENTITY: {_identity.GetDisplayText()}/n/n";
+        displayText += $"HABIT: {_name} (GOOD)\n";
+        displayText += $"IDENTITY: {_identity.GetDisplayText()}\n\n";
 
-        displayText += "(1) MAKE IT OBVIOUS:/n";
+        displayText += "(1) MAKE IT OBVIOUS:\n";
         foreach (string makeItObvious in _makeItObvious)
         {
-            displayText += $"   -{makeItObvious}/n";
+            displayText += $"   -{makeItObvious}\n";
         }
-        displayText += "/n";
+        displayText += "\n";
 
-        displayText += "(2) MAKE IT ATTRACTIVE:/n";
+        displayText += "(2) MAKE IT ATTRACTIVE:\n";
         foreach (string makeItAttractive in _makeItAttractive)
         {
-            displayText += $"   -{makeItAttractive}/n";
+            displayText += $"   -{makeItAttractive}\n";
         }
-        displayText += "/n";
+        displayText += "\n";
 
-        displayText += "(3) MAKE IT EASY:/n";
+        displayText += "(3) MAKE IT EASY:\n";
         foreach (string makeItEasy in _makeItEasy)
         {
-            displayText += $"   -{makeItEasy}/n";
+            displayText += $"   -{makeItEasy}\n";
         }
-        displayText += "/n";
+        displayText += "\n";
 
-        displayText += "(1) MAKE IT SATISFYING:/n";
+        displayText += "(1) MAKE IT SATISFYING:\n";
         foreach (string makeItSatisfying in _makeItSatisfying)
         {
-            displayText += $"   -{makeItSatisfying}/n";
+            displayText += $"   -{makeItSatisfying}\n";
         }
-        displayText += "/n";
+        displayText += "\n";
 
         displayText += "TWO-MINUTE RULE";
         foreach (TwoMinuteRule twoMinuteRule in _twoMinuteRules)

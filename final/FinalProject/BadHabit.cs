@@ -5,36 +5,36 @@ public class BadHabit : Habit
     {
         string displayText = "";
 
-        displayText += $"HABIT: {_name} (BAD)/n";
-        displayText += $"IDENTITY: {_identity.GetDisplayText()}/n/n";
+        displayText += $"HABIT: {_name} (BAD)\n";
+        displayText += $"IDENTITY: {_identity.GetDisplayText()}\n\n";
 
-        displayText += "(1) MAKE IT INVISIBLE:/n";
+        displayText += "(1) MAKE IT INVISIBLE:\n";
         foreach (string makeItObvious in _makeItObvious)
         {
-            displayText += $"   -{makeItObvious}/n";
+            displayText += $"   -{makeItObvious}\n";
         }
-        displayText += "/n";
+        displayText += "\n";
 
-        displayText += "(2) MAKE IT UNATTRACTIVE:/n";
+        displayText += "(2) MAKE IT UNATTRACTIVE:\n";
         foreach (string makeItAttractive in _makeItAttractive)
         {
-            displayText += $"   -{makeItAttractive}/n";
+            displayText += $"   -{makeItAttractive}\n";
         }
-        displayText += "/n";
+        displayText += "\n";
 
-        displayText += "(3) MAKE IT DIFFICULT:/n";
+        displayText += "(3) MAKE IT DIFFICULT:\n";
         foreach (string makeItEasy in _makeItEasy)
         {
-            displayText += $"   -{makeItEasy}/n";
+            displayText += $"   -{makeItEasy}\n";
         }
-        displayText += "/n";
+        displayText += "\n";
 
-        displayText += "(1) MAKE IT UNSATISFYING:/n";
+        displayText += "(1) MAKE IT UNSATISFYING:\n";
         foreach (string makeItSatisfying in _makeItSatisfying)
         {
-            displayText += $"   -{makeItSatisfying}/n";
+            displayText += $"   -{makeItSatisfying}\n";
         }
-        displayText += "/n";
+        displayText += "\n";
 
         return displayText;
     }
