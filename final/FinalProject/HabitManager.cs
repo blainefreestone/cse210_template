@@ -33,7 +33,9 @@ public class HabitManager
                 Console.WriteLine("Please choose habit you would like to display:");
                 string userHabitChoiceInText = Console.ReadLine();
                 int userHabitChoice = int.Parse(userHabitChoiceInText);
+                Console.Clear();
                 DisplayHabit(_habits[userHabitChoice - 1]);
+                Console.ReadLine();
             }
             else if (userChoice == 4)
             {
@@ -494,27 +496,42 @@ public class HabitManager
     }
     public void DisplayHabit(Habit habit)
     {
-        Console.Clear();
         Console.WriteLine(habit.GetDisplayText());
         Console.WriteLine();
         Console.WriteLine("Habit Tracker (Last 7 Days):");
         _habitTracker.DisplayThisWeekHabitTracker(habit);
-        Console.ReadLine();
     }
     public void DisplayAll()
     {
         int runningCount = 1;
-        foreach(Habit habit in _habits)
+        foreach(GoodHabit habit in _habits.OfType<GoodHabit>())
+        {
+            Console.Clear();
+            Console.WriteLine($"Page {runningCount}/{_habits.Count()}\nPress ENTER for next page, type 'newrule' to add new two-minute rule, or type 'done' to exit.\n");
+            DisplayHabit(habit);
+            runningCount += 1; 
+
+            string userInput = Console.ReadLine();
+            if (userInput.ToLower() == "done") {break;}
+            else if (userInput == "newrule")
+            {
+                Console.Clear();
+                Console.WriteLine("Describe this rule.");
+                string description = Console.ReadLine();
+                Console.WriteLine("How much extra time does this add to completing your habit?");
+                int addedTimeInMinutes = int.Parse(Console.ReadLine());
+                TwoMinuteRule twoMinuteRule = new TwoMinuteRule(GetCurrentDate(), description, addedTimeInMinutes);
+                habit.AddTwoMinuteRule(twoMinuteRule);
+            }
+        }
+        foreach(BadHabit habit in _habits.OfType<BadHabit>())
         {
             Console.Clear();
             Console.WriteLine($"Page {runningCount}/{_habits.Count()}\nPress ENTER for next page or type 'done' to exit.\n");
-            Console.Write(habit.GetDisplayText());
-            Console.WriteLine();
-            Console.WriteLine("Habit Tracker (Last 7 Days):");
-            _habitTracker.DisplayThisWeekHabitTracker(habit);
+            DisplayHabit(habit);
+            runningCount += 1; 
+
             string userInput = Console.ReadLine();
-            runningCount += 1;
-            
             if (userInput.ToLower() == "done") {break;}
         }
     }
