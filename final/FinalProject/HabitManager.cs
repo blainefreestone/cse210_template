@@ -13,7 +13,8 @@ public class HabitManager
         {
             Console.Clear();
             Console.WriteLine("Welcome to your habit binder!");
-            Console.WriteLine("Choose an option:\n   1) Create new habit.\n   2) Display All Habits\n   3) Display Single Habit\n   4) Record Habit Completion for Today\n   5) Save and Quit");
+            Console.WriteLine();
+            Console.WriteLine($"Choose an option:\n   1) Create new habit.\n   2) Display All Habits\n   3) Display Single Habit\n   4) Record Habit Completion for Today ({GetCurrentDate()})\n   5) Save and Quit\n   6) Delete Program Data");
             string userChoiceInText = Console.ReadLine();
             int userChoice = int.Parse(userChoiceInText);
 
@@ -28,7 +29,8 @@ public class HabitManager
             else if (userChoice == 3)
             {
                 DisplayHabitList();
-                Console.WriteLine("Choose habit you would like to display:");
+                Console.WriteLine();
+                Console.WriteLine("Please choose habit you would like to display:");
                 string userHabitChoiceInText = Console.ReadLine();
                 int userHabitChoice = int.Parse(userHabitChoiceInText);
                 DisplayHabit(_habits[userHabitChoice - 1]);
@@ -40,6 +42,10 @@ public class HabitManager
                 Save();
                 Thread.Sleep(5000);
                 break;
+            }
+            else if (userChoice == 6)
+            {
+                Restore();
             }
         }
     }
@@ -422,11 +428,47 @@ public class HabitManager
     }
     public void Restore()
     {
+        Console.Clear();
+        Console.WriteLine("This will delete all your habits and their information.");
+        Thread.Sleep(5000);
+        Console.WriteLine();
+        Console.WriteLine("This action cannot be undone.");
+        Thread.Sleep(5000);
+        Console.WriteLine();
+        Console.WriteLine("Are you sure you want to do this? (Y)es or (N)o");
 
+        while (true)
+        {
+            string userChoice = Console.ReadLine();
+            if (userChoice.ToLower() == "y") 
+            {
+                _habits.Clear();
+                break;
+            }
+            else if (userChoice.ToLower() == "n") {break;}
+            else
+            {
+                Console.WriteLine("Invalid option... Data will not be restored.");
+                break;
+            }
+        }
+        
+        _habits.Clear();
     }
     public void DisplayHabitList()
     {
-
+        Console.Clear();
+        
+        Console.WriteLine("List of Habits:");
+        Console.WriteLine();
+        
+        int i = 1;
+        foreach (Habit habit in _habits)
+        {
+            Console.WriteLine($"   {i}) {habit.GetName()}");
+            
+            i += 1;
+        }
     }
     public void DisplayHabit(Habit habit)
     {
@@ -451,6 +493,7 @@ public class HabitManager
     public DateTime GetCurrentDate()
     {
         DateTime currentDateTime = DateTime.Today;
+        currentDateTime.ToShortDateString();
         return currentDateTime;
     }
 }

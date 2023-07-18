@@ -32,6 +32,10 @@ public abstract class Habit
     {
         _datesCompleted.Add(dateCompleted);
     }
+    public string GetName()
+    {
+        return _name;
+    }
     public abstract string GetDisplayText();
     public abstract string GetRepresentationText();
     public List<DateTime> GetDateCompletedList()
