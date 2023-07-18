@@ -14,7 +14,7 @@ public class HabitManager
             Console.Clear();
             Console.WriteLine("Welcome to your habit binder!");
             Console.WriteLine();
-            Console.WriteLine($"Choose an option:\n   1) Create new habit.\n   2) Display All Habits\n   3) Display Single Habit\n   4) Record Habit Completion for Today ({GetCurrentDate()})\n   5) Save and Quit\n   6) Delete Program Data");
+            Console.WriteLine($"Choose an option:\n   1) Create new habit.\n   2) Display All Habits\n   3) Display Single Habit\n   4) Display Habit Tracker\n   5) Record Habit Completion for Today ({GetCurrentDate()})\n   6) Save and Quit\n   7) Delete Program Data");
             string userChoiceInText = Console.ReadLine();
             int userChoice = int.Parse(userChoiceInText);
 
@@ -35,15 +35,33 @@ public class HabitManager
                 int userHabitChoice = int.Parse(userHabitChoiceInText);
                 DisplayHabit(_habits[userHabitChoice - 1]);
             }
+            else if (userChoice == 4)
+            {
+                Console.Clear();
+                Console.WriteLine("Habit Tracker (Past 7 Days):");
+                Console.WriteLine();
+                _habitTracker.DisplayAllHabitTrackers();
+                Console.ReadLine();
+            }
             else if (userChoice == 5)
+            {
+                DisplayHabitList();
+                Console.WriteLine();
+                Console.WriteLine("Please choose habit you would like to mark completed today:");
+                string userHabitChoiceInText = Console.ReadLine();
+                int userHabitChoice = int.Parse(userHabitChoiceInText);
+                _habits[userHabitChoice - 1].RecordCompleted(GetCurrentDate());
+            }
+            else if (userChoice == 6)
             {
                 Console.Clear();
                 Console.WriteLine("Saving...");
                 Save();
                 Thread.Sleep(5000);
+                Console.Clear();
                 break;
             }
-            else if (userChoice == 6)
+            else if (userChoice == 7)
             {
                 Restore();
             }
@@ -138,6 +156,7 @@ public class HabitManager
                 }
 
                 _habits.Add(goodHabit);
+                _habitTracker.AddHabit(goodHabit);
 
                 break;
             }
@@ -221,6 +240,7 @@ public class HabitManager
                 }
                 
                 _habits.Add(badHabit);
+                _habitTracker.AddHabit(badHabit);
 
                 break;
             }
@@ -310,7 +330,7 @@ public class HabitManager
                         if (lines[i+j+k] == "twominuterule") {break;}
                         else
                         {
-                            goodHabit.RecordCompleted(DateTime.Parse(lines[i+j+k]));
+                            goodHabit.RecordCompleted(DateOnly.Parse(lines[i+j+k]));
                         }
                         k += 1;
                     }   
@@ -323,7 +343,7 @@ public class HabitManager
                         else
                         {
                             string[] twoMinuteRuleParts = lines[i+j+k].Split("|");
-                            DateTime date = DateTime.Parse(twoMinuteRuleParts[2]);
+                            DateOnly date = DateOnly.Parse(twoMinuteRuleParts[2]);
                             string ruleDescription = twoMinuteRuleParts[1];
                             int addedTimeInMinutes = int.Parse(twoMinuteRuleParts[0]);
                             
@@ -340,6 +360,7 @@ public class HabitManager
                     j += 1;
                 }
                 _habits.Add(goodHabit);
+                _habitTracker.AddHabit(goodHabit);
             }
             
             else if (lines[i] == "badhabitstart")
@@ -407,7 +428,7 @@ public class HabitManager
                         else if (lines[i+j+k] == "savefiledone") {break;}
                         else
                         {
-                            badHabit.RecordCompleted(DateTime.Parse(lines[i+j+k]));
+                            badHabit.RecordCompleted(DateOnly.Parse(lines[i+j+k]));
                         }
                         k += 1;
                     }   
@@ -419,6 +440,7 @@ public class HabitManager
                     j += 1;
                 }
                 _habits.Add(badHabit);
+                _habitTracker.AddHabit(badHabit);
             }
 
             else if (lines[i] == "savefiledone") {break;}
@@ -474,6 +496,9 @@ public class HabitManager
     {
         Console.Clear();
         Console.WriteLine(habit.GetDisplayText());
+        Console.WriteLine();
+        Console.WriteLine("Habit Tracker (Last 7 Days):");
+        _habitTracker.DisplayThisWeekHabitTracker(habit);
         Console.ReadLine();
     }
     public void DisplayAll()
@@ -484,16 +509,18 @@ public class HabitManager
             Console.Clear();
             Console.WriteLine($"Page {runningCount}/{_habits.Count()}\nPress ENTER for next page or type 'done' to exit.\n");
             Console.Write(habit.GetDisplayText());
+            Console.WriteLine();
+            Console.WriteLine("Habit Tracker (Last 7 Days):");
+            _habitTracker.DisplayThisWeekHabitTracker(habit);
             string userInput = Console.ReadLine();
             runningCount += 1;
             
             if (userInput.ToLower() == "done") {break;}
         }
     }
-    public DateTime GetCurrentDate()
+    public DateOnly GetCurrentDate()
     {
-        DateTime currentDateTime = DateTime.Today;
-        currentDateTime.ToShortDateString();
-        return currentDateTime;
+        DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+        return currentDate;
     }
 }

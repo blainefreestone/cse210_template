@@ -69,9 +69,9 @@ public class BadHabit : Habit
         }
 
         representationText += "dates\n";
-        foreach (DateTime date in _datesCompleted)
+        foreach (DateOnly date in _datesCompleted)
         {
-            representationText += $"{date}";
+            representationText += $"{date}\n";
         }
 
         return representationText;

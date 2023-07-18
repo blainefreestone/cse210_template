@@ -76,7 +76,7 @@ public class GoodHabit : Habit
         }
 
         representationText += "dates\n";
-        foreach (DateTime date in _datesCompleted)
+        foreach (DateOnly date in _datesCompleted)
         {
             representationText += $"{date}\n";
         }

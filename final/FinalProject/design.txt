@@ -26,7 +26,7 @@ List<TwoMinuteRule> _twoMinuteRules
 ** TwoMinuteRule **
 
 - Attributes -
-DateTime _date
+DateOnly _date
 string _ruleDescription
 int _addedTimeInMinutes
 
