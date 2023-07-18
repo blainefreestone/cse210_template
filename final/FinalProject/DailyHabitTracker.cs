@@ -26,7 +26,7 @@ public class DailyHabitTracker
                 thisWeekHabitTrackerText += "[ ] ";
             }
         }
-        Console.Write(thisWeekHabitTrackerText);
+        Console.WriteLine(thisWeekHabitTrackerText);
     }
     public void AddHabit(Habit habit)
     {

@@ -29,7 +29,7 @@ public class BadHabit : Habit
         }
         displayText += "\n";
 
-        displayText += "(1) MAKE IT UNSATISFYING:\n";
+        displayText += "(4) MAKE IT UNSATISFYING:\n";
         foreach (string makeItSatisfying in _makeItSatisfying)
         {
             displayText += $"   -{makeItSatisfying}\n";

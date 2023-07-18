@@ -1,36 +1,59 @@
 goodhabitstart
-Good Habit 1|coolness.|I am cool as freak.
+Scripture Reading|Discipleship|I am a devoted follower of Jesus Christ.
 mio
-I will make it super obvious to me.
+I will put my scriptures on my desk at night before I fall asleep.
+After waking up, I will study my scriptures at my desk.
 mia
-I will make this super attractive.
+After reading the scriptures I will go downstairs and eat breakfast.
 mie
+I will put my phone on do not disturb the night before so that I don't get distracted while reading.
+I will say a prayer before reading to stay focused.
 mis
+I will write about what I read after reading.
 dates
+7/12/2023
+7/13/2023
+7/14/2023
+7/15/2023
+7/16/2023
+7/17/2023
 7/18/2023
 twominuterule
+3|I will read one chapter a day.|7/8/2023
+3|I will read 2 chapters a day|7/15/2023
+2|I will write my thoughts about what I read in my journal.|7/18/2023
 badhabitstart
-Bad Habit.|lameness|I am lame
+Sleeping In.|Early-riser|I am someone who wakes up early.
 mio
-I am going to make it invisible.
+I will turn on the light immediately after waking up.
+I will sleep with the windows open to be bright in the morning.
 mia
-I will actually do nothing because I like this bad habit.
+I will put my phone in the other room with an alarm set to force me out.
 mie
-I will make it so diifficult. 
+I will pray immediately after turning off phone alarm creating friction between me going back to sleep
 mis
-Yeah idk about this one.
+I will text my girlfriend that I successfully woke up early every morning.
 dates
+7/11/2023
+7/13/2023
+7/15/2023
 7/18/2023
-badhabitstart
-test habit two|codinggod|I am great at coding.
+goodhabitstart
+Do Homework|Success|I am someone that does well in school.
 mio
-invisibility
+I will open my computer to the BYUI assignment dashboard after getting ready every morning.
+After opening the dashboard I will plan which assignments to do.
 mia
-unattractiveness
+I will only check my phone after I have done all the homework for the day.
 mie
-dificulty
+I will listen to relaxing music as I do homework.
+I will rid my desk of all distractions.
+I will commit to doing homework by putting my phone on do not disturb.
 mis
-unsatisfaction
+I will eat something good after.
 dates
-7/18/2023
+7/13/2023
+7/14/2023
+7/17/2023
+twominuterule
 savefiledone

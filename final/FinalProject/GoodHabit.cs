@@ -30,7 +30,7 @@ public class GoodHabit : Habit
         }
         displayText += "\n";
 
-        displayText += "(1) MAKE IT SATISFYING:\n";
+        displayText += "(4) MAKE IT SATISFYING:\n";
         foreach (string makeItSatisfying in _makeItSatisfying)
         {
             displayText += $"   -{makeItSatisfying}\n";
@@ -84,7 +84,7 @@ public class GoodHabit : Habit
         representationText += "twominuterule\n";
         foreach (TwoMinuteRule twoMinuteRule in _twoMinuteRules)
         {
-            representationText += $"{twoMinuteRule.GetRepresentationText()}";
+            representationText += $"{twoMinuteRule.GetRepresentationText()}\n";
         }
 
         return representationText;

@@ -289,75 +289,90 @@ public class HabitManager
 
                     else if (lines[i+j] == "mio")
                     {
-                        if (lines[i+j+k] == "mia") {break;}
-                        else
+                        while (true)
                         {
-                            goodHabit.AddMakeItObvious(lines[i+j+k]);
+                            if (lines[i+j+k] == "mia") {break;}
+                            else
+                            {
+                                goodHabit.AddMakeItObvious(lines[i+j+k]);
+                            }
+                            k += 1;
                         }
-                        k += 1;
                     }
 
                     else if (lines[i+j] == "mia")
                     {
-                        if (lines[i+j+k] == "mie") {break;}
-                        else
+                        while (true)
                         {
-                            goodHabit.AddMakeItAttractive(lines[i+j+k]);
+                            if (lines[i+j+k] == "mie") {break;}
+                            else
+                            {
+                                goodHabit.AddMakeItAttractive(lines[i+j+k]);
+                            }
+                            k += 1;
                         }
-                        k += 1;
                     }
 
                     else if (lines[i+j] == "mie")
                     {
-                        if (lines[i+j+k] == "mis") {break;}
-                        else
+                        while (true)
                         {
-                            goodHabit.AddMakeItEasy(lines[i+j+k]);
+                            if (lines[i+j+k] == "mis") {break;}
+                            else
+                            {
+                                goodHabit.AddMakeItEasy(lines[i+j+k]);
+                            }
+                            k += 1;
                         }
-                        k += 1;
                     }
 
                     else if (lines[i+j] == "mis")
                     {
-                        if (lines[i+j+k] == "dates") {break;}
-                        else
+                        while (true)
                         {
-                            goodHabit.AddMakeItSatisfying(lines[i+j+k]);
+                            if (lines[i+j+k] == "dates") {break;}
+                            else
+                            {
+                                goodHabit.AddMakeItSatisfying(lines[i+j+k]);
+                            }
+                            k += 1;
                         }
-                        k += 1;
                     }         
 
                     else if (lines[i+j] == "dates")
                     {
-                        if (lines[i+j+k] == "twominuterule") {break;}
-                        else
+                        while (true)
                         {
-                            goodHabit.RecordCompleted(DateOnly.Parse(lines[i+j+k]));
+                            if (lines[i+j+k] == "twominuterule") {break;}
+                            else
+                            {
+                                goodHabit.RecordCompleted(DateOnly.Parse(lines[i+j+k]));
+                            }
+                            k += 1;
                         }
-                        k += 1;
                     }   
 
                     else if (lines[i+j] == "twominuterule")
                     {
-                        if (lines[i+j+k] == "badhabitstart") {break;}
-                        else if (lines[i+j+k] == "goodhabitstart") {break;}
-                        else if (lines[i+j+k] == "savefiledone") {break;}
-                        else
+                        while (true)
                         {
-                            string[] twoMinuteRuleParts = lines[i+j+k].Split("|");
-                            DateOnly date = DateOnly.Parse(twoMinuteRuleParts[2]);
-                            string ruleDescription = twoMinuteRuleParts[1];
-                            int addedTimeInMinutes = int.Parse(twoMinuteRuleParts[0]);
-                            
-                            TwoMinuteRule twoMinuteRule = new TwoMinuteRule(date, ruleDescription, addedTimeInMinutes);
+                            if (lines[i+j+k] == "badhabitstart") {break;}
+                            else if (lines[i+j+k] == "goodhabitstart") {break;}
+                            else if (lines[i+j+k] == "savefiledone") {break;}
+                            else
+                            {
+                                string[] twoMinuteRuleParts = lines[i+j+k].Split("|");
+                                DateOnly date = DateOnly.Parse(twoMinuteRuleParts[2]);
+                                string ruleDescription = twoMinuteRuleParts[1];
+                                int addedTimeInMinutes = int.Parse(twoMinuteRuleParts[0]);
+                                
+                                TwoMinuteRule twoMinuteRule = new TwoMinuteRule(date, ruleDescription, addedTimeInMinutes);
 
-                            goodHabit.AddTwoMinuteRule(twoMinuteRule);
+                                goodHabit.AddTwoMinuteRule(twoMinuteRule);
+                            }
+                            k += 1;
                         }
-                        k += 1;
-                    }
-
-                    else if (lines[i+j] == "goodhabitstart") {break;}
-                    else if (lines[i+j] == "badhabitstart") {break;}                                 
+                    }                               
                     
                     j += 1;
                 }
@@ -380,64 +395,75 @@ public class HabitManager
                 {
                     int k = 1;
                     if (lines[i+j] == "badhabitstart") {break;}
-                    else if (lines[i+j] == "badhabitstart") {break;}
+                    else if (lines[i+j] == "goodhabitstart") {break;}
                     else if (lines[i+j] == "savefiledone") {break;}
 
                     else if (lines[i+j] == "mio")
                     {
-                        if (lines[i+j+k] == "mia") {break;}
-                        else
+                        while (true)
                         {
-                            badHabit.AddMakeItObvious(lines[i+j+k]);
+                            if (lines[i+j+k] == "mia") {break;}
+                            else
+                            {
+                                badHabit.AddMakeItObvious(lines[i+j+k]);
+                            }
+                            k += 1;
                         }
-                        k += 1;
                     }
 
                     else if (lines[i+j] == "mia")
                     {
-                        if (lines[i+j+k] == "mie") {break;}
-                        else
+                        while (true)
                         {
-                            badHabit.AddMakeItAttractive(lines[i+j+k]);
+                            if (lines[i+j+k] == "mie") {break;}
+                            else
+                            {
+                                badHabit.AddMakeItAttractive(lines[i+j+k]);
+                            }
+                            k += 1;
                         }
-                        k += 1;
                     }
 
                     else if (lines[i+j] == "mie")
                     {
-                        if (lines[i+j+k] == "mis") {break;}
-                        else
+                        while (true)
                         {
-                            badHabit.AddMakeItEasy(lines[i+j+k]);
+                            if (lines[i+j+k] == "mis") {break;}
+                            else
+                            {
+                                badHabit.AddMakeItEasy(lines[i+j+k]);
+                            }
+                            k += 1;
                         }
-                        k += 1;
                     }
 
                     else if (lines[i+j] == "mis")
                     {
-                        if (lines[i+j+k] == "dates") {break;}
-                        else
+                        while (true)
                         {
-                            badHabit.AddMakeItSatisfying(lines[i+j+k]);
+                            if (lines[i+j+k] == "dates") {break;}
+                            else
+                            {
+                                badHabit.AddMakeItSatisfying(lines[i+j+k]);
+                            }
+                            k += 1;
                         }
-                        k += 1;
                     }         
 
                     else if (lines[i+j] == "dates")
                     {
-                        if (lines[i+j+k] == "badhabitstart") {break;}
-			            else if (lines[i+j+k] == "goodhabitstart") {break;}
-                        else if (lines[i+j+k] == "savefiledone") {break;}
-                        else
+                        while (true)
                         {
-                            badHabit.RecordCompleted(DateOnly.Parse(lines[i+j+k]));
+                            if (lines[i+j+k] == "badhabitstart") {break;}
+                            else if (lines[i+j+k] == "goodhabitstart") {break;}
+                            else if (lines[i+j+k] == "savefiledone") {break;}
+                            else
+                            {
+                                badHabit.RecordCompleted(DateOnly.Parse(lines[i+j+k]));
+                            }
+                            k += 1;
                         }
-                        k += 1;
-                    }   
-
-
-                    else if (lines[i+j] == "badhabitstart") {break;}
-                    else if (lines[i+j] == "badhabitstart") {break;}                                 
+                    }                                 
                     
                     j += 1;
                 }
