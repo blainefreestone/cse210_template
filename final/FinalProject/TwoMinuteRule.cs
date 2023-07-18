@@ -1,9 +1,9 @@
 public class TwoMinuteRule
 {
-    private DateOnly _date;
+    private DateTime _date;
     private string _ruleDescription;
     private int _addedTimeInMinutes;
-    public TwoMinuteRule(DateOnly date, string ruleDescription, int addedTimeInMinutes)
+    public TwoMinuteRule(DateTime date, string ruleDescription, int addedTimeInMinutes)
     {
         _date = date;
         _ruleDescription = ruleDescription;

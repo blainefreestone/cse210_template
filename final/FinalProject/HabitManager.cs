@@ -4,8 +4,10 @@ public class HabitManager
     private DailyHabitTracker _habitTracker = new DailyHabitTracker();
     public void Run()
     {
-
+        Console.Clear();
+        Console.WriteLine("Habit Binder 1.0\nLoading...");
         Load();
+        Thread.Sleep(5000);
         
         while (true)
         {
@@ -295,12 +297,43 @@ public class HabitManager
                             goodHabit.AddMakeItSatisfying(lines[i+j+k]);
                         }
                         k += 1;
-                    }                   
+                    }         
+
+                    else if (lines[i+j] == "dates")
+                    {
+                        if (lines[i+j+k] == "twominuterule") {break;}
+                        else
+                        {
+                            goodHabit.RecordCompleted(DateTime.Parse(lines[i+j+k]));
+                        }
+                        k += 1;
+                    }   
+
+                    else if (lines[i+j] == "twominuterule")
+                    {
+                        if (lines[i+j+k] == "badhabitstart") {break;}
+                        else if (lines[i+j+k] == "goodhabitstart") {break;}
+                        else if (lines[i+j+k] == "savefiledone") {break;}
+                        else
+                        {
+                            string[] twoMinuteRuleParts = lines[i+j+k].Split("|");
+                            DateTime date = DateTime.Parse(twoMinuteRuleParts[2]);
+                            string ruleDescription = twoMinuteRuleParts[1];
+                            int addedTimeInMinutes = int.Parse(twoMinuteRuleParts[0]);
+                            
+                            TwoMinuteRule twoMinuteRule = new TwoMinuteRule(date, ruleDescription, addedTimeInMinutes);
+
+                            goodHabit.AddTwoMinuteRule(twoMinuteRule);
+                        }
+                        k += 1;
+                    }
+
+                    else if (lines[i+j] == "goodhabitstart") {break;}
+                    else if (lines[i+j] == "badhabitstart") {break;}                                 
                     
                     j += 1;
                 }
-
-                i += 1;
+                _habits.Add(goodHabit);
             }
             
             else if (lines[i] == "badhabitstart")
@@ -309,8 +342,81 @@ public class HabitManager
                 string name = mainLineParts[0];
                 string identityDescriptor = mainLineParts[1];
                 string identityDescription = mainLineParts[2];
+
+                Identity identity = new Identity(identityDescriptor, identityDescription);
+                BadHabit badHabit = new BadHabit(name, identity);
+
+                int j = 1;
+                while (true)
+                {
+                    int k = 1;
+                    if (lines[i+j] == "badhabitstart") {break;}
+                    else if (lines[i+j] == "badhabitstart") {break;}
+                    else if (lines[i+j] == "savefiledone") {break;}
+
+                    else if (lines[i+j] == "mio")
+                    {
+                        if (lines[i+j+k] == "mia") {break;}
+                        else
+                        {
+                            badHabit.AddMakeItObvious(lines[i+j+k]);
+                        }
+                        k += 1;
+                    }
+
+                    else if (lines[i+j] == "mia")
+                    {
+                        if (lines[i+j+k] == "mie") {break;}
+                        else
+                        {
+                            badHabit.AddMakeItAttractive(lines[i+j+k]);
+                        }
+                        k += 1;
+                    }
+
+                    else if (lines[i+j] == "mie")
+                    {
+                        if (lines[i+j+k] == "mis") {break;}
+                        else
+                        {
+                            badHabit.AddMakeItEasy(lines[i+j+k]);
+                        }
+                        k += 1;
+                    }
+
+                    else if (lines[i+j] == "mis")
+                    {
+                        if (lines[i+j+k] == "dates") {break;}
+                        else
+                        {
+                            badHabit.AddMakeItSatisfying(lines[i+j+k]);
+                        }
+                        k += 1;
+                    }         
+
+                    else if (lines[i+j] == "dates")
+                    {
+                        if (lines[i+j+k] == "badhabitstart") {break;}
+			            else if (lines[i+j+k] == "goodhabitstart") {break;}
+                        else if (lines[i+j+k] == "savefiledone") {break;}
+                        else
+                        {
+                            badHabit.RecordCompleted(DateTime.Parse(lines[i+j+k]));
+                        }
+                        k += 1;
+                    }   
+
+
+                    else if (lines[i+j] == "badhabitstart") {break;}
+                    else if (lines[i+j] == "badhabitstart") {break;}                                 
+                    
+                    j += 1;
+                }
+                _habits.Add(badHabit);
             }
-            
+
+            else if (lines[i] == "savefiledone") {break;}
+
             i += 1;
         }
     }
