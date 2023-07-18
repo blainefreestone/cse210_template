@@ -2,6 +2,45 @@ public class HabitManager
 {
     private List<Habit> _habits = new List<Habit>();
     private DailyHabitTracker _habitTracker = new DailyHabitTracker();
+    public void Run()
+    {
+
+        Load();
+        
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("Welcome to your habit binder!");
+            Console.WriteLine("Choose an option:\n   1) Create new habit.\n   2) Display All Habits\n   3) Display Single Habit\n   4) Record Habit Completion for Today\n   5) Save and Quit");
+            string userChoiceInText = Console.ReadLine();
+            int userChoice = int.Parse(userChoiceInText);
+
+            if (userChoice == 1)
+            {
+                Create();
+            }
+            else if (userChoice == 2)
+            {
+                DisplayAll();
+            }
+            else if (userChoice == 3)
+            {
+                DisplayHabitList();
+                Console.WriteLine("Choose habit you would like to display:");
+                string userHabitChoiceInText = Console.ReadLine();
+                int userHabitChoice = int.Parse(userHabitChoiceInText);
+                DisplayHabit(_habits[userHabitChoice - 1]);
+            }
+            else if (userChoice == 5)
+            {
+                Console.Clear();
+                Console.WriteLine("Saving...");
+                Save();
+                Thread.Sleep(5000);
+                break;
+            }
+        }
+    }
     public void Create()
     {
         Console.Clear();
@@ -181,11 +220,99 @@ public class HabitManager
     }
     public void Save()
     {
+        string fileName = "saveFile.txt";
 
+        using (StreamWriter outputFile = new StreamWriter(fileName))
+        {
+            foreach (Habit habit in _habits)
+            {
+                outputFile.Write(habit.GetRepresentationText());
+            }
+            outputFile.WriteLine("savefiledone");
+        }
     }
     public void Load()
     {
+        string filename = "saveFile.txt";
+        string[] lines = System.IO.File.ReadAllLines(filename);
 
+        int i = 0;
+        while (true)
+        {
+            if (lines[i] == "goodhabitstart")
+            {
+                string[] mainLineParts = lines[i+1].Split("|");
+                string name = mainLineParts[0];
+                string identityDescriptor = mainLineParts[1];
+                string identityDescription = mainLineParts[2];
+
+                Identity identity = new Identity(identityDescriptor, identityDescription);
+                GoodHabit goodHabit = new GoodHabit(name, identity);
+
+                int j = 1;
+                while (true)
+                {
+                    int k = 1;
+                    if (lines[i+j] == "goodhabitstart") {break;}
+                    else if (lines[i+j] == "badhabitstart") {break;}
+                    else if (lines[i+j] == "savefiledone") {break;}
+
+                    else if (lines[i+j] == "mio")
+                    {
+                        if (lines[i+j+k] == "mia") {break;}
+                        else
+                        {
+                            goodHabit.AddMakeItObvious(lines[i+j+k]);
+                        }
+                        k += 1;
+                    }
+
+                    else if (lines[i+j] == "mia")
+                    {
+                        if (lines[i+j+k] == "mie") {break;}
+                        else
+                        {
+                            goodHabit.AddMakeItAttractive(lines[i+j+k]);
+                        }
+                        k += 1;
+                    }
+
+                    else if (lines[i+j] == "mie")
+                    {
+                        if (lines[i+j+k] == "mis") {break;}
+                        else
+                        {
+                            goodHabit.AddMakeItEasy(lines[i+j+k]);
+                        }
+                        k += 1;
+                    }
+
+                    else if (lines[i+j] == "mis")
+                    {
+                        if (lines[i+j+k] == "dates") {break;}
+                        else
+                        {
+                            goodHabit.AddMakeItSatisfying(lines[i+j+k]);
+                        }
+                        k += 1;
+                    }                   
+                    
+                    j += 1;
+                }
+
+                i += 1;
+            }
+            
+            else if (lines[i] == "badhabitstart")
+            {
+                string[] mainLineParts = lines[i+1].Split("|");
+                string name = mainLineParts[0];
+                string identityDescriptor = mainLineParts[1];
+                string identityDescription = mainLineParts[2];
+            }
+            
+            i += 1;
+        }
     }
     public void Restore()
     {
@@ -195,9 +322,11 @@ public class HabitManager
     {
 
     }
-    public void DisplayHabit(int habitIndex)
+    public void DisplayHabit(Habit habit)
     {
-        Console.WriteLine(_habits[habitIndex].GetDisplayText());
+        Console.Clear();
+        Console.WriteLine(habit.GetDisplayText());
+        Console.ReadLine();
     }
     public void DisplayAll()
     {
@@ -205,7 +334,7 @@ public class HabitManager
         foreach(Habit habit in _habits)
         {
             Console.Clear();
-            Console.WriteLine($"Page {runningCount}/{_habits.Count()}\nPress ENTER for next page or type 'done' to exit.");
+            Console.WriteLine($"Page {runningCount}/{_habits.Count()}\nPress ENTER for next page or type 'done' to exit.\n");
             Console.Write(habit.GetDisplayText());
             string userInput = Console.ReadLine();
             runningCount += 1;
@@ -213,8 +342,9 @@ public class HabitManager
             if (userInput.ToLower() == "done") {break;}
         }
     }
-    public void GetCurrentDate()
+    public DateTime GetCurrentDate()
     {
-
+        DateTime currentDateTime = DateTime.Today;
+        return currentDateTime;
     }
 }

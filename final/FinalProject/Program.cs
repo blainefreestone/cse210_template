@@ -5,7 +5,6 @@ class Program
     static void Main(string[] args)
     {
         HabitManager habitManager = new HabitManager();
-        habitManager.Create();
-        habitManager.DisplayAll();
+        habitManager.Run();
     }
 }

@@ -6,7 +6,7 @@ public abstract class Habit
     protected List<string> _makeItAttractive = new List<string>();
     protected List<string> _makeItEasy = new List<string>();
     protected List<string> _makeItSatisfying = new List<string>();
-    protected List<DateOnly> _datesCompleted = new List<DateOnly>();
+    protected List<DateTime> _datesCompleted = new List<DateTime>();
     public Habit(string name, Identity identity)
     {
         _name = name;
@@ -28,13 +28,13 @@ public abstract class Habit
     {
         _makeItSatisfying.Add(plan);
     }
-    public void RecordCompleted(DateOnly dateCompleted)
+    public void RecordCompleted(DateTime dateCompleted)
     {
         _datesCompleted.Add(dateCompleted);
     }
     public abstract string GetDisplayText();
     public abstract string GetRepresentationText();
-    public List<DateOnly> GetDateCompletedList()
+    public List<DateTime> GetDateCompletedList()
     {
         return _datesCompleted;
     }

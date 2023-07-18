@@ -40,6 +40,40 @@ public class BadHabit : Habit
     }
     public override string GetRepresentationText()
     {
-        throw new NotImplementedException();
+        string representationText = "badhabitstart\n";
+
+        representationText += $"{_name}|{_identity.GetRepresentationText()}\n";
+        
+        representationText += "mio\n";
+        foreach (string makeItObvious in _makeItObvious)
+        {
+            representationText += $"{makeItObvious}\n";
+        }
+
+        representationText += "mia\n";
+        foreach (string makeItAttractive in _makeItAttractive)
+        {
+            representationText += $"{makeItAttractive}\n";
+        }
+
+        representationText += "mie\n";
+        foreach (string makeItEasy in _makeItEasy)
+        {
+            representationText += $"{makeItEasy}\n";
+        }
+
+        representationText += "mis\n";
+        foreach (string makeItSatisfying in _makeItSatisfying)
+        {
+            representationText += $"{makeItSatisfying}\n";
+        }
+
+        representationText += "dates\n";
+        foreach (DateTime date in _datesCompleted)
+        {
+            representationText += $"{date}";
+        }
+
+        return representationText;
     }
 }

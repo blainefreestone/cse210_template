@@ -9,6 +9,10 @@ public class TwoMinuteRule
         _ruleDescription = ruleDescription;
         _addedTimeInMinutes = addedTimeInMinutes;
     }
+    public string GetRepresentationText()
+    {
+        return $"{_addedTimeInMinutes}|{_ruleDescription}|{_date}";
+    }
     public string GetDisplayText()
     {
         return $"{_addedTimeInMinutes} minutes: {_ruleDescription} ({_date})";
