@@ -1,7 +1,6 @@
 public class HabitManager
 {
     private List<Habit> _habits = new List<Habit>();
-    private DailyHabitTracker _habitTracker = new DailyHabitTracker();
     public void Run()
     {
         Console.Clear();
@@ -42,7 +41,7 @@ public class HabitManager
                 Console.Clear();
                 Console.WriteLine("Habit Tracker (Past 7 Days):");
                 Console.WriteLine();
-                _habitTracker.DisplayAllHabitTrackers();
+                DisplayAllHabitTrackers();
                 Console.ReadLine();
             }
             else if (userChoice == 5)
@@ -158,7 +157,6 @@ public class HabitManager
                 }
 
                 _habits.Add(goodHabit);
-                _habitTracker.AddHabit(goodHabit);
 
                 break;
             }
@@ -242,7 +240,6 @@ public class HabitManager
                 }
                 
                 _habits.Add(badHabit);
-                _habitTracker.AddHabit(badHabit);
 
                 break;
             }
@@ -377,7 +374,6 @@ public class HabitManager
                     j += 1;
                 }
                 _habits.Add(goodHabit);
-                _habitTracker.AddHabit(goodHabit);
             }
             
             else if (lines[i] == "badhabitstart")
@@ -468,7 +464,6 @@ public class HabitManager
                     j += 1;
                 }
                 _habits.Add(badHabit);
-                _habitTracker.AddHabit(badHabit);
             }
 
             else if (lines[i] == "savefiledone") {break;}
@@ -525,7 +520,7 @@ public class HabitManager
         Console.WriteLine(habit.GetDisplayText());
         Console.WriteLine();
         Console.WriteLine("Habit Tracker (Last 7 Days):");
-        _habitTracker.DisplayThisWeekHabitTracker(habit);
+        DisplayThisWeekHabitTracker(habit);
     }
     public void DisplayAll()
     {
@@ -565,5 +560,32 @@ public class HabitManager
     {
         DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
         return currentDate;
+    }
+    public void DisplayAllHabitTrackers()
+    {
+
+        foreach (Habit habit in _habits)
+        {
+            Console.Write(String.Format("{0,-30}", habit.GetName()));
+            DisplayThisWeekHabitTracker(habit);
+            Console.WriteLine();
+        }
+    }
+    public void DisplayThisWeekHabitTracker(Habit habit)
+    {
+        string thisWeekHabitTrackerText = "";
+        
+        for (int i = 6; i>=0; i--)
+        {
+            if (habit.IsDateCompleted(GetCurrentDate().AddDays(-i)) == true)
+            {
+                thisWeekHabitTrackerText += "[x] ";
+            }
+            else
+            {
+                thisWeekHabitTrackerText += "[ ] ";
+            }
+        }
+        Console.WriteLine(thisWeekHabitTrackerText);
     }
 }

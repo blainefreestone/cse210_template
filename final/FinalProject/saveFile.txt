@@ -18,6 +18,7 @@ dates
 7/16/2023
 7/17/2023
 7/18/2023
+7/24/2023
 twominuterule
 3|I will read one chapter a day.|7/8/2023
 3|I will read 2 chapters a day|7/15/2023
