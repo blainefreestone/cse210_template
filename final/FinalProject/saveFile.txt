@@ -57,4 +57,23 @@ dates
 7/14/2023
 7/17/2023
 twominuterule
+goodhabitstart
+Good Habit Test|Coolness|I am someone cool.
+mio
+Obviousness.
+mia
+mie
+mis
+dates
+twominuterule
+badhabitstart
+Bad Habit Test.|Lameness|I am someone lame.
+mio
+Invisibility.
+mia
+Unattractiveness
+mie
+mis
+dates
+7/24/2023
 savefiledone

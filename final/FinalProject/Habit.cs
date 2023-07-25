@@ -38,6 +38,7 @@ public abstract class Habit
     }
     public abstract string GetDisplayText();
     public abstract string GetRepresentationText();
+    public abstract void Initialize();
     public bool IsDateCompleted(DateOnly date)
     {
         bool isDateCompleted = _datesCompleted.Contains(date);

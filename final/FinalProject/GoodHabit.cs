@@ -89,6 +89,72 @@ public class GoodHabit : Habit
 
         return representationText;
     }
+    public override void Initialize()
+    {
+        Console.WriteLine("In what ways are you going to make this habit obvious? (Type 'done' when finished)");
+        while (true)
+        {
+            Console.Write(">");
+            string makeItObvious = Console.ReadLine();
+
+            if (makeItObvious.ToLower() == "done")
+            {
+                break;
+            }
+            else
+            {
+                _makeItObvious.Add(makeItObvious);
+            }
+        }
+        
+        Console.WriteLine("In what ways are you going to make this habit attractive? (Type 'done' when finished)");
+        while (true)
+        {
+            Console.Write(">");
+            string makeItAttractive = Console.ReadLine();
+
+            if (makeItAttractive.ToLower() == "done")
+            {
+                break;
+            }
+            else
+            {
+                _makeItAttractive.Add(makeItAttractive);
+            }
+        }
+
+        Console.WriteLine("In what ways are you going to make this habit easy? (Type 'done' when finished)");
+        while (true)
+        {
+            Console.Write(">");
+            string makeItEasy = Console.ReadLine();
+
+            if (makeItEasy.ToLower() == "done")
+            {
+                break;
+            }
+            else
+            {
+                _makeItEasy.Add(makeItEasy);
+            }
+        }
+
+        Console.WriteLine("In what ways are you going to make this habit satisfying? (Type 'done' when finished)");
+        while (true)
+        {
+            Console.Write(">");
+            string makeItSatisfying = Console.ReadLine();
+
+            if (makeItSatisfying.ToLower() == "done")
+            {
+                break;
+            }
+            else
+            {
+                _makeItSatisfying.Add(makeItSatisfying);
+            }
+        }        
+    }
     public void AddTwoMinuteRule(TwoMinuteRule twoMinuteRule)
     {
         _twoMinuteRules.Add(twoMinuteRule);

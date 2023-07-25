@@ -77,170 +77,37 @@ public class HabitManager
             string userChoiceInText = Console.ReadLine();
             int userChoice = int.Parse(userChoiceInText);
 
+            if (userChoice != 1 & userChoice != 2)
+            {
+                Console.WriteLine("That is not a valid option. Please try again");
+                Thread.Sleep(3000);
+                continue;
+            }
+
+            Console.WriteLine("What is the name of this habit?");
+            string name = Console.ReadLine();
+
+            Console.WriteLine("Briefly, how would you describe the identity behind this habit?");
+            string identityDescription = Console.ReadLine();
+
+            Console.WriteLine("How would you put that in one word?");
+            string identityDescriptor = Console.ReadLine();
+
+            Identity identity = new Identity(identityDescriptor, identityDescription);
+
             if (userChoice == 1)
             {
-                Console.WriteLine("What is the name of this habit?");
-                string name = Console.ReadLine();
-
-                Console.WriteLine("Briefly, how would you describe the identity behind this habit?");
-                string identityDescription = Console.ReadLine();
-
-                Console.WriteLine("How would you put that in one word?");
-                string identityDescriptor = Console.ReadLine();
-
-                Identity identity = new Identity(identityDescriptor, identityDescription);
-
                 GoodHabit goodHabit = new GoodHabit(name, identity);
-
-                Console.WriteLine("In what ways are you going to make this habit obvious? (Type 'done' when finished)");
-                while (true)
-                {
-                    Console.Write(">");
-                    string makeItObvious = Console.ReadLine();
-
-                    if (makeItObvious.ToLower() == "done")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        goodHabit.AddMakeItObvious(makeItObvious);
-                    }
-                }
-                
-                Console.WriteLine("In what ways are you going to make this habit attractive? (Type 'done' when finished)");
-                while (true)
-                {
-                    Console.Write(">");
-                    string makeItAttractive = Console.ReadLine();
-
-                    if (makeItAttractive.ToLower() == "done")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        goodHabit.AddMakeItAttractive(makeItAttractive);
-                    }
-                }
-
-                Console.WriteLine("In what ways are you going to make this habit easy? (Type 'done' when finished)");
-                while (true)
-                {
-                    Console.Write(">");
-                    string makeItEasy = Console.ReadLine();
-
-                    if (makeItEasy.ToLower() == "done")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        goodHabit.AddMakeItEasy(makeItEasy);
-                    }
-                }
-
-                Console.WriteLine("In what ways are you going to make this habit satisfying? (Type 'done' when finished)");
-                while (true)
-                {
-                    Console.Write(">");
-                    string makeItSatisfying = Console.ReadLine();
-
-                    if (makeItSatisfying.ToLower() == "done")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        goodHabit.AddMakeItSatisfying(makeItSatisfying);
-                    }
-                }
-
+                goodHabit.Initialize();
                 _habits.Add(goodHabit);
-
                 break;
             }
+
             else if (userChoice == 2)
             {
-                Console.WriteLine("What is the name of this habit?");
-                string name = Console.ReadLine();
-
-                Console.WriteLine("Briefly, how would you describe the identity behind this habit?");
-                string identityDescription = Console.ReadLine();
-
-                Console.WriteLine("How would you put that in one word?");
-                string identityDescriptor = Console.ReadLine();
-
-                Identity identity = new Identity(identityDescriptor, identityDescription);
-
                 BadHabit badHabit = new BadHabit(name, identity);
-
-                Console.WriteLine("In what ways are you going to make this habit invisible? (Type 'done' when finished)");
-                while (true)
-                {
-                    Console.Write(">");
-                    string makeItObvious = Console.ReadLine();
-
-                    if (makeItObvious.ToLower() == "done")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        badHabit.AddMakeItObvious(makeItObvious);
-                    }
-                }
-                
-                Console.WriteLine("In what ways are you going to make this habit unattractive? (Type 'done' when finished)");
-                while (true)
-                {
-                    Console.Write(">");
-                    string makeItAttractive = Console.ReadLine();
-
-                    if (makeItAttractive.ToLower() == "done")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        badHabit.AddMakeItAttractive(makeItAttractive);
-                    }
-                }
-
-                Console.WriteLine("In what ways are you going to make this habit difficult? (Type 'done' when finished)");
-                while (true)
-                {
-                    Console.Write(">");
-                    string makeItEasy = Console.ReadLine();
-
-                    if (makeItEasy.ToLower() == "done")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        badHabit.AddMakeItEasy(makeItEasy);
-                    }
-                }
-
-                Console.WriteLine("In what ways are you going to make this habit unsatisfying? (Type 'done' when finished)");
-                while (true)
-                {
-                    Console.Write(">");
-                    string makeItSatisfying = Console.ReadLine();
-
-                    if (makeItSatisfying.ToLower() == "done")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        badHabit.AddMakeItSatisfying(makeItSatisfying);
-                    }
-                }
-                
+                badHabit.Initialize();
                 _habits.Add(badHabit);
-
                 break;
             }
         }

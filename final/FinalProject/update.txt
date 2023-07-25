@@ -1,0 +1,16 @@
+Improvements:
+
+Features
+-Update the way in which two minute rules are made and entered.
+-Update the way in which identities are created and used (i.e. there should be a list of identities to choose from; or you can create a new identity at the creation of a new habit if you want a different one).
+
+Loading and Saving:
+-Research best practices for saving objects in program.
+-Impliment in save and loading functions.
+-Encapsulate the load function better. (I.e., put the interpretation of the representation texts within the habit classes themselves.)
+
+Habit Tracker:
+-Allow for more dates in a 7-day grouping fashion based on the current day (i.e. it's always monday through sunday excluding the days that haven't passed yet)
+
+User Interface:
+-Use Visual Studio to create better windows based user interface (don't get lazy and use the current structure so that the program can be improved in the future).
