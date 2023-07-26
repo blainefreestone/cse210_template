@@ -36,9 +36,6 @@ public abstract class Habit
     {
         return _name;
     }
-    public abstract void Display();
-    public abstract string GetRepresentationText();
-    public abstract void Initialize();
     public bool IsDateCompleted(DateOnly date)
     {
         bool isDateCompleted = _datesCompleted.Contains(date);
@@ -70,4 +67,7 @@ public abstract class Habit
         }
         Console.WriteLine(thisWeekHabitTrackerText);
     }
+    public abstract void Display();
+    public abstract string GetRepresentationText();
+    public abstract void Initialize();
 }

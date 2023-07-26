@@ -3,7 +3,7 @@ public class GoodHabit : Habit
     private List<TwoMinuteRule> _twoMinuteRules = new List<TwoMinuteRule>();
     public GoodHabit(string name, Identity identity) : base(name, identity) {}
     public override void Display()
-    {
+    {  
         string displayText = "";
 
         displayText += $"HABIT: {_name} (GOOD)\n";
@@ -44,6 +44,18 @@ public class GoodHabit : Habit
         }
 
         Console.WriteLine(displayText);
+        Console.WriteLine();
+
+        Console.WriteLine("Habit tracker (Past 7 days):");
+        DisplayThisWeekHabitTracker();
+
+        Console.WriteLine();
+        Console.WriteLine("To add a two minute rule, type 'newrule':");
+        string userInput = Console.ReadLine();
+        if (userInput.ToLower() == "newrule")
+        {
+            CreateTwoMinuteRule();
+        }
     }
     public override string GetRepresentationText()
     {
@@ -167,6 +179,9 @@ public class GoodHabit : Habit
 
         TwoMinuteRule twoMinuteRule = new TwoMinuteRule(date, ruleDescription, addedTimeInMinutes);
         _twoMinuteRules.Add(twoMinuteRule);
+
+        Console.WriteLine("Two-minute rule added!");
+        Thread.Sleep(2000);
     }
     public void AddTwoMinuteRule(TwoMinuteRule twoMinuteRule)
     {
