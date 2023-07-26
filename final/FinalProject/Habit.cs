@@ -36,7 +36,7 @@ public abstract class Habit
     {
         return _name;
     }
-    public abstract string GetDisplayText();
+    public abstract void Display();
     public abstract string GetRepresentationText();
     public abstract void Initialize();
     public bool IsDateCompleted(DateOnly date)
@@ -47,5 +47,27 @@ public abstract class Habit
     public List<DateOnly> GetDateCompletedList()
     {
         return _datesCompleted;
+    }
+    public DateOnly GetCurrentDate()
+    {
+        DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+        return currentDate;
+    }
+    public void DisplayThisWeekHabitTracker()
+    {
+        string thisWeekHabitTrackerText = "";
+        
+        for (int i = 6; i>=0; i--)
+        {
+            if (IsDateCompleted(GetCurrentDate().AddDays(-i)) == true)
+            {
+                thisWeekHabitTrackerText += "[x] ";
+            }
+            else
+            {
+                thisWeekHabitTrackerText += "[ ] ";
+            }
+        }
+        Console.WriteLine(thisWeekHabitTrackerText);
     }
 }

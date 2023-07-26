@@ -384,10 +384,10 @@ public class HabitManager
     }
     public void DisplayHabit(Habit habit)
     {
-        Console.WriteLine(habit.GetDisplayText());
+        habit.Display();
         Console.WriteLine();
         Console.WriteLine("Habit Tracker (Last 7 Days):");
-        DisplayThisWeekHabitTracker(habit);
+        habit.DisplayThisWeekHabitTracker();
     }
     public void DisplayAll()
     {
@@ -434,25 +434,8 @@ public class HabitManager
         foreach (Habit habit in _habits)
         {
             Console.Write(String.Format("{0,-30}", habit.GetName()));
-            DisplayThisWeekHabitTracker(habit);
+            habit.DisplayThisWeekHabitTracker();
             Console.WriteLine();
         }
-    }
-    public void DisplayThisWeekHabitTracker(Habit habit)
-    {
-        string thisWeekHabitTrackerText = "";
-        
-        for (int i = 6; i>=0; i--)
-        {
-            if (habit.IsDateCompleted(GetCurrentDate().AddDays(-i)) == true)
-            {
-                thisWeekHabitTrackerText += "[x] ";
-            }
-            else
-            {
-                thisWeekHabitTrackerText += "[ ] ";
-            }
-        }
-        Console.WriteLine(thisWeekHabitTrackerText);
     }
 }

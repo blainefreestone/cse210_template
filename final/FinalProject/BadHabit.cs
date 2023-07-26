@@ -1,7 +1,7 @@
 public class BadHabit : Habit
 {
     public BadHabit(string name, Identity identity) : base(name, identity) {}
-    public override string GetDisplayText()
+    public override void Display()
     {
         string displayText = "";
 
@@ -36,7 +36,7 @@ public class BadHabit : Habit
         }
         displayText += "\n";
 
-        return displayText;
+        Console.WriteLine(displayText);
     }
     public override string GetRepresentationText()
     {

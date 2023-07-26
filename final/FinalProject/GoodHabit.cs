@@ -2,7 +2,7 @@ public class GoodHabit : Habit
 {
     private List<TwoMinuteRule> _twoMinuteRules = new List<TwoMinuteRule>();
     public GoodHabit(string name, Identity identity) : base(name, identity) {}
-    public override string GetDisplayText()
+    public override void Display()
     {
         string displayText = "";
 
@@ -43,7 +43,7 @@ public class GoodHabit : Habit
             displayText += $"   -{twoMinuteRule.GetDisplayText()}\n";
         }
 
-        return displayText;
+        Console.WriteLine(displayText);
     }
     public override string GetRepresentationText()
     {
@@ -154,6 +154,19 @@ public class GoodHabit : Habit
                 _makeItSatisfying.Add(makeItSatisfying);
             }
         }        
+    }
+    public void CreateTwoMinuteRule()
+    {
+        Console.WriteLine("Please describe this rule.");
+        string ruleDescription = Console.ReadLine();
+
+        Console.WriteLine("How many minutes extra does this add onto the habit?");
+        int addedTimeInMinutes = int.Parse(Console.ReadLine());
+
+        DateOnly date = DateOnly.FromDateTime(DateTime.Now);
+
+        TwoMinuteRule twoMinuteRule = new TwoMinuteRule(date, ruleDescription, addedTimeInMinutes);
+        _twoMinuteRules.Add(twoMinuteRule);
     }
     public void AddTwoMinuteRule(TwoMinuteRule twoMinuteRule)
     {
